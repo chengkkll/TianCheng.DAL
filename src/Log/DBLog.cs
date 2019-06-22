@@ -54,7 +54,11 @@ namespace TianCheng.DAL
         /// <summary>
         /// 日志的配置信息
         /// </summary>
-        public static LoggerConfiguration Configuration = new LoggerConfiguration()
+        private static LoggerConfiguration Configuration
+        {
+            get
+            {
+                return new LoggerConfiguration()
                         .WriteTo.Console(Serilog.Events.LogEventLevel.Warning)
                         .WriteTo.Debug()
                         .WriteTo.RollingFile(FileFormat, Serilog.Events.LogEventLevel.Warning)
@@ -66,5 +70,7 @@ namespace TianCheng.DAL
                             networkCredential: NetworkCredential,
                             outputTemplate: "[{Level}] {NewLine}{Message} {NewLine}{Exception}",
                             mailSubject: "系统错误-提醒邮件");
+            }
+        }
     }
 }
