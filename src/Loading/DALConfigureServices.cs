@@ -17,6 +17,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // 注册数据库模块配置信息
             services.Configure<List<TianCheng.DAL.DBConnectionOptions>>(configuration.GetSection(TianCheng.DAL.DBConnection.DBConnectionNodeName));
+            // 注册数据库操作服务
+            services.AddDALServices();
         }
     }
 }
